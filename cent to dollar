@@ -1,0 +1,43 @@
+//Bhakti Pokhrel
+#include <iostream>
+using namespace std;
+
+struct MonetaryChange {
+   int dollars;
+   int quarters;
+   int dime;
+   int nickel;
+   int cent;
+   
+};
+
+MonetaryChange ComputeChange(int cents) {
+   MonetaryChange change;
+
+   change.dollars = cents / 100;
+   change.quarters = (cents % 100)/25;
+   change.dime = ((cents % 100)%25/10);
+   change.nickel =(((cents % 100)%25)%10)/5;
+   change.cent = ((((cents % 100)%25)%10)%5);
+
+   return change;
+}
+
+int main(int argc, char* argv[]) {
+   int userCents;
+   MonetaryChange change;
+
+   cout << "Enter cents: " << endl;
+   cin  >> userCents;
+
+   change = ComputeChange(userCents);
+   
+   cout << "Dollars: " << change.dollars << endl;
+   cout << "Quarters: " << change.quarters << endl;
+   cout << "Dimes: " << change.dime << endl;
+   cout << "Nickel: " << change.nickel << endl;
+   cout << "Cent: " << change.cent << endl;
+   
+
+   return 0;
+}
